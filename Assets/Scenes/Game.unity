@@ -374,6 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c152c8661055ab94c9d8b96eca28423d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nodePrefab: {fileID: 2277986107472888058, guid: a03c12b1a1691aa4ca9796eb1a8d9e15, type: 3}
   poolObjects: {fileID: 735008822}
   height: 8
   width: 6
