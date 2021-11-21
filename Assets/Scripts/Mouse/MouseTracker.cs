@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class MouseTracker : MonoBehaviour
 {
+    Camera mainCam;
+
+    private void Awake()
+    {
+        mainCam = Camera.main;
+    }
+
     private void FixedUpdate()
     {
-        transform.position = Input.mousePosition;
+        transform.position = mainCam.ScreenToWorldPoint(Input.mousePosition);
     }
 }
