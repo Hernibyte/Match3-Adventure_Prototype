@@ -17,8 +17,8 @@ public class MatchGenerator : MonoBehaviour
 
     private void Start()
     {
-        float heighPosition = 0;
-        float widthPosition = 0;
+        float heighPosition = transform.position.x;
+        float widthPosition = transform.position.y;
 
         for (int i = 0; i < height; i++)
         {
@@ -35,10 +35,10 @@ public class MatchGenerator : MonoBehaviour
                     }
                 }
 
-                widthPosition += widthOffset;
+                widthPosition -= widthOffset;
             }
             heighPosition += heightOffset;
-            widthPosition = 0f;
+            widthPosition = transform.position.y;
         }
     }
 }
