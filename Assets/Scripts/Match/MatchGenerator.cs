@@ -27,7 +27,8 @@ public class MatchGenerator : MonoBehaviour
             for (int j = 0; j < width; j++)
             {
                 nodeList.Add(Instantiate(nodePrefab, new Vector3(heighPosition, widthPosition), Quaternion.identity, transform));
-                nodeList[nodeList.Count - 1].AskForPart(poolObjects);
+                nodeList[nodeList.Count - 1].poolObjects = poolObjects;
+                nodeList[nodeList.Count - 1].AskForPart();
                 widthPosition -= widthOffset;
             }
             heighPosition += heightOffset;

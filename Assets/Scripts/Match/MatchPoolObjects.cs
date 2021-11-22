@@ -5,6 +5,8 @@ using UnityEngine;
 public class MatchPoolObjects : MonoBehaviour
 {
     [SerializeField] List<MatchPart> objectsPrefabs;
+    public PoolSelectedParts poolSelectedParts;
+
     [HideInInspector] public List<MatchPart> objects;
 
     public void GenerateObjects(int height, int width)

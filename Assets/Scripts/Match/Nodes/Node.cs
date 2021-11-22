@@ -4,9 +4,22 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    MatchPart part;
+    [HideInInspector] public MatchPoolObjects poolObjects;
+    [HideInInspector] public bool ifSelected;
+    [HideInInspector] public MatchPart part;
 
-    public void AskForPart(MatchPoolObjects poolObjects)
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            if (!ifSelected)
+                poolObjects.poolSelectedParts.SelectPart(this);
+            else
+                poolObjects.poolSelectedParts.RollBackSelection(this);
+        }
+    }
+
+    public void AskForPart()
     {
         while (true)
         {
@@ -19,5 +32,12 @@ public class Node : MonoBehaviour
             }
         }
         part.transform.position = transform.position;
+    }
+
+    public void ReturnPart()
+    {
+        part.ifActived = false;
+        part.transform.localPosition = Vector3.zero;
+        part = null;
     }
 }
