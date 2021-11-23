@@ -5,14 +5,14 @@ using UnityEngine;
 public class Node : MonoBehaviour
 {
     [HideInInspector] public MatchPoolObjects poolObjects;
-    [HideInInspector] public bool ifSelected;
+    [HideInInspector] public bool imSelected;
     [HideInInspector] public MatchPart part;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            if (!ifSelected)
+            if (!imSelected)
                 poolObjects.poolSelectedParts.SelectPart(this);
             else
                 poolObjects.poolSelectedParts.RollBackSelection(this);
@@ -24,10 +24,10 @@ public class Node : MonoBehaviour
         while (true)
         {
             int location = Random.Range(0, poolObjects.objects.Count);
-            if (!poolObjects.objects[location].ifActived)
+            if (!poolObjects.objects[location].imActived)
             {
                 part = poolObjects.objects[location];
-                poolObjects.objects[location].ifActived = true;
+                poolObjects.objects[location].imActived = true;
                 break;
             }
         }
@@ -36,7 +36,7 @@ public class Node : MonoBehaviour
 
     public void ReturnPart()
     {
-        part.ifActived = false;
+        part.imActived = false;
         part.transform.localPosition = Vector3.zero;
         part = null;
     }

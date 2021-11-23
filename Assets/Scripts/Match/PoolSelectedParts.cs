@@ -17,6 +17,19 @@ public class PoolSelectedParts : MonoBehaviour
         }
     }
 
+    void Select(Node node)
+    {
+        node.imSelected = true;
+        node.part.transform.localScale = new Vector3(1.08f, 1.08f, 1f);
+        selectedNodes.Add(node);
+    }
+
+    void Deselect(Node node)
+    {
+        node.imSelected = false;
+        node.part.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
     public void CheckMatch()
     {
         if (selectedNodes.Count >= 3)
@@ -33,9 +46,7 @@ public class PoolSelectedParts : MonoBehaviour
     {
         if (selectedNodes.Count == 0)
         {
-            node.ifSelected = true;
-            node.part.transform.localScale = new Vector3(1.08f, 1.08f, 1f);
-            selectedNodes.Add(node);
+            Select(node);
         }
         else
         {
@@ -45,9 +56,7 @@ public class PoolSelectedParts : MonoBehaviour
                 if (distance >= minDistance &&
                     distance <= maxDistance)
                 {
-                    node.ifSelected = true;
-                    node.part.transform.localScale = new Vector3(1.08f, 1.08f, 1f);
-                    selectedNodes.Add(node);
+                    Select(node);
                 }
             }
         }
@@ -62,8 +71,7 @@ public class PoolSelectedParts : MonoBehaviour
 
     public void DeselectPart(Node node)
     {
-        node.ifSelected = false;
-        node.part.transform.localScale = new Vector3(1f, 1f, 1f);
+        Deselect(node);
         selectedNodes.Remove(node);
     }
 
@@ -71,8 +79,7 @@ public class PoolSelectedParts : MonoBehaviour
     {
         foreach (Node node in selectedNodes)
         {
-            node.ifSelected = false;
-            node.part.transform.localScale = new Vector3(1f, 1f, 1f);
+            Deselect(node);
         }
         selectedNodes.Clear();
     }

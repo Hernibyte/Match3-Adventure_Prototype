@@ -12,5 +12,5 @@ public enum PartType
 public class MatchPart : MonoBehaviour
 {
     public PartType type;
-    public bool ifActived;
+    public bool imActived;
 }
