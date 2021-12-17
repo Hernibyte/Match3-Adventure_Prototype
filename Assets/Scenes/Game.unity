@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 363854067}
   - component: {fileID: 363854069}
   - component: {fileID: 363854070}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mouse Tracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}

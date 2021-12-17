@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
+    [SerializeField] LayerMask mouseLayer;
+    [SerializeField] float collisionRadius;
     [HideInInspector] public MatchPoolObjects poolObjects;
     [HideInInspector] public bool imSelected;
     [HideInInspector] public MatchPart part;
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        Collider2D collider = Physics2D.OverlapCircle(transform.position, collisionRadius, mouseLayer);
+        if (collider != null)
         {
-            if (!imSelected)
-                poolObjects.poolSelectedParts.SelectPart(this);
-            else
-                poolObjects.poolSelectedParts.RollBackSelection(this);
+            if(Input.GetKey(KeyCode.Mouse0))
+            {
+                if (!imSelected)
+                    poolObjects.poolSelectedParts.SelectPart(this);
+                else
+                    poolObjects.poolSelectedParts.RollBackSelection(this);
+            }
         }
     }
 
